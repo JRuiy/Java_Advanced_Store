@@ -14,22 +14,17 @@ import javax.persistence.Table;
 public class Game {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	@Column
 	private String name;
-	@Column
 	private String description;
-	@Column
 	private String platform;
-	@Column
-	private Date release;
-	@Column
 	private String publisher;
-	@Column
+	@Column(name = "release_date")
+	private Date release;
 	private String genre;
-	@Column
 	private Double price;
+
 
 	public Game() {
 	}

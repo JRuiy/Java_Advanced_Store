@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Bucket {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	@ManyToOne

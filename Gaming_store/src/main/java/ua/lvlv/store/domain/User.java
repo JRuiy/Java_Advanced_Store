@@ -1,6 +1,8 @@
 package ua.lvlv.store.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,6 +28,7 @@ public class User {
 	@Transient
 	private String passwordConfim;
 
+	@Enumerated(EnumType.STRING)
 	private UserRole userRole;
 
 	public User() {
@@ -52,6 +55,16 @@ public class User {
 		this.password = password;
 		this.passwordConfim = passwordConfim;
 		this.userRole = userRole;
+	}
+
+	public User(User user) {
+		this.id = user.id;
+		this.firstName = user.firstName;
+		this.lastName = user.lastName;
+		this.email = user.email;
+		this.phone = user.phone;
+		this.password = user.password;
+		this.userRole = user.userRole;
 	}
 
 	public Integer getId() {
