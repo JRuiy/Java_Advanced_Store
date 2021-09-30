@@ -7,8 +7,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import ua.lvlv.store.domain.Game;
 import ua.lvlv.store.domain.User;
+import ua.lvlv.store.service.GamesService;
 import ua.lvlv.store.service.UserService;
 
 @Controller
@@ -16,6 +19,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private GamesService gameService;
 	
 	@RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
 	public String login(Model model, String error, String logout) {
@@ -49,7 +55,14 @@ public class UserController {
     }
     
     @RequestMapping(value ="/home", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "home";
+    public ModelAndView welcome(Model model) {
+    	ModelAndView map = new ModelAndView("home");
+    	map.addObject("games", gameService.getAllGames());
+        return map;
     }
+    
+    @RequestMapping(value ="/create-game", method = RequestMethod.GET)
+    public ModelAndView createPeriodical() {
+        return new ModelAndView("createGame", "game", new Game());
+    } 
 }

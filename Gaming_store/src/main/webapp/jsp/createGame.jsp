@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -12,7 +13,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Welcome</title>
+<title>Games</title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -27,7 +28,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css"
 	rel="stylesheet">
 <link href="${contextPath}/resources/css/home.css" rel="stylesheet">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
 
@@ -45,7 +47,7 @@
 				</div>
 				<li><a href="/home" class="home">Home</a></li>
 				<li><a href="/create-game">Add game</a></li>
-				<li><a href="/basket">Bucket</a></li>
+				<li><a href="/basket">Basket</a></li>
 				<li><a href="/login?logout"
 					onclick="document.forms['logoutForm'].submit()">Logout</a></li>
 			</ul>
@@ -60,30 +62,58 @@
 					class="hamb-bottom"></span>
 			</button>
 			<div class="container">
-			<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
 				<div class="row">
-						<c:if test="${not empty games}">
-							<c:forEach items="${games}" var="currentGame">
-								<div class="w3-card-4 col-lg-4">
-									<img
-										src="https://lh3.googleusercontent.com/proxy/Dk5BXAy-PoMHM-ZflYmATib5ry0Clts_VyWvDxcOF4poJx2tP2YAmqrYX8d4BLPGBnQqbM8I39pibtkr4sRw3oYMSGcMNX4sQJEKSa4pmK1fKWDhpzEdws3vnZfHtWT6jBUyFDfWUQG5V03uUv9a"
-										alt="Norway" style="width: 100%">
-									<div class="w3-container w3-center">
-										<h3>${currentGame.name}</h3>
-										<p>${currentGame.description}</p>
-										<p>${currentPeriodical.price}</p>
-									</div>
-									<button class="w3-button w3-block w3-dark-grey">+ add
-										to busket</button>
-								</div>
-							</c:forEach>
-						</c:if>
+					<div class="col-lg-12 col-lg-offset-2">
+						<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
+
+						<form:form method="POST" action="${contextPath}/addGame"
+							modelAttribute="game">
+							<table>
+								<tr>
+									<td><form:label path="name">Name</form:label></td>
+									<td><form:input path="name" /></td>
+								</tr>
+								<tr>
+									<td><form:label path="description">Description</form:label></td>
+									<td><form:input path="description" /></td>
+								</tr>
+								<tr>
+									<td><form:label path="platform">Platform</form:label></td>
+									<td><form:select path="platform">
+											<form:option value="PS4" label="PS4"></form:option>
+											<form:option value="PS5" label="PS5"></form:option>
+											<form:option value="Xbox ONE" label="Xbox ONE"></form:option>
+											<form:option value="Xbox X" label="Xbox X"></form:option>
+											<form:option value="PC" label="PC"></form:option>
+										</form:select></td>
+								</tr>
+								<tr>
+									<td><form:label path="publisher">Publisher</form:label></td>
+									<td><form:input path="publisher" /></td>
+								</tr>
+								<tr>
+									<td><form:label path="release">Date release</form:label></td>
+									<td><form:input path="release" id="datepicker" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td><form:label path="genre">Genre</form:label></td>
+									<td><form:input path="genre" /></td>
+								</tr>
+								<tr>
+									<td><form:label path="price" >Price</form:label></td>
+									<td><form:input path="price" autocomplete="off"/></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Submit" /></td>
+								</tr>
+							</table>
+
+						</form:form>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- /#page-content-wrapper -->
-
-
 	</div>
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -93,13 +123,10 @@
 		</form>
 	</c:if>
 
-
-
-
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resources/js/home.js"></script>
-
+	<script src="${contextPath}/resources/js/calendar.js"></script>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -107,5 +134,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

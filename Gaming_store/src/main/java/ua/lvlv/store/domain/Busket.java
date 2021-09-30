@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "bucket")
-public class Bucket {
+@Table(name = "busket")
+public class Busket {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,16 +30,16 @@ public class Bucket {
 	@Column(name = "purchase_date")
 	private Date purchaseDate;
 
-	public Bucket() {
+	public Busket() {
 	}
 
-	public Bucket(User user, Game game, Date purchaseDate) {
+	public Busket(User user, Game game, Date purchaseDate) {
 		this.user = user;
 		this.game = game;
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Bucket(Integer id, User user, Game game, Date purchaseDate) {
+	public Busket(Integer id, User user, Game game, Date purchaseDate) {
 		this.id = id;
 		this.user = user;
 		this.game = game;
@@ -97,7 +97,7 @@ public class Bucket {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Bucket other = (Bucket) obj;
+		Busket other = (Busket) obj;
 		if (game == null) {
 			if (other.game != null)
 				return false;
@@ -123,7 +123,7 @@ public class Bucket {
 
 	@Override
 	public String toString() {
-		return "Bucket [id=" + id + ", user=" + user + ", game=" + game + ", purchaseDate=" + purchaseDate + "]";
+		return "Busket [id=" + id + ", user=" + user + ", game=" + game + ", purchaseDate=" + purchaseDate + "]";
 	}
 
 }
