@@ -67,41 +67,48 @@
 						<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
 
 						<form:form method="POST" action="${contextPath}/addGame"
-							modelAttribute="game">
+							enctype="multipart/form-data">
 							<table>
 								<tr>
-									<td><form:label path="name">Name</form:label></td>
-									<td><form:input path="name" /></td>
+									<td>Name</td>
+									<td><input type="text" name="name" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="description">Description</form:label></td>
-									<td><form:input path="description" /></td>
+									<td>Description</td>
+									<td><input type="text" name="description" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="platform">Platform</form:label></td>
-									<td><form:select path="platform">
-											<form:option value="PS4" label="PS4"></form:option>
-											<form:option value="PS5" label="PS5"></form:option>
-											<form:option value="Xbox ONE" label="Xbox ONE"></form:option>
-											<form:option value="Xbox X" label="Xbox X"></form:option>
-											<form:option value="PC" label="PC"></form:option>
-										</form:select></td>
+									<td>Platform</td>
+									<td>
+									<select name="platform">
+										<option value="PS4">PS4</option>
+										<option value="PS5">PS5</option>
+										<option value="Xbox ONE">Xbox ONE</option>
+										<option value="Xbox X">Xbox X</option>
+										<option value="PC">PC</option>
+									</select>
+									</td>
 								</tr>
 								<tr>
-									<td><form:label path="publisher">Publisher</form:label></td>
-									<td><form:input path="publisher" /></td>
+									<td>Publisher</td>
+									<td><input type="text" name="publisher" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="release">Date release</form:label></td>
-									<td><form:input path="release" id="datepicker" autocomplete="off"/></td>
+									<td>Date release</td>
+									<td><input type="text" name="release" id="datepicker"
+										autocomplete="off" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="genre">Genre</form:label></td>
-									<td><form:input path="genre" /></td>
+									<td>Genre</td>
+									<td><input type="text" name="genre" /></td>
 								</tr>
 								<tr>
-									<td><form:label path="price" >Price</form:label></td>
-									<td><form:input path="price" autocomplete="off"/></td>
+									<td>Price</td>
+									<td><input type="number" name="price" autocomplete="off" /></td>
+								</tr>
+								<tr>
+									<td>Select an image to upload</td>
+									<td><input type="file" name="image" /></td>
 								</tr>
 								<tr>
 									<td><input type="submit" value="Submit" /></td>

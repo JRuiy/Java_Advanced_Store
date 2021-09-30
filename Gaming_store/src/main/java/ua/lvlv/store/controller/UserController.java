@@ -62,7 +62,7 @@ public class UserController {
     }
     
     @RequestMapping(value ="/create-game", method = RequestMethod.GET)
-    public ModelAndView createPeriodical() {
-        return new ModelAndView("createGame", "game", new Game());
+    public String createGame() {
+    	return "createGame";
     } 
 }

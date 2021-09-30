@@ -66,8 +66,8 @@
 							<c:forEach items="${games}" var="currentGame">
 								<div class="w3-card-4 col-lg-4">
 									<img
-										src="https://lh3.googleusercontent.com/proxy/Dk5BXAy-PoMHM-ZflYmATib5ry0Clts_VyWvDxcOF4poJx2tP2YAmqrYX8d4BLPGBnQqbM8I39pibtkr4sRw3oYMSGcMNX4sQJEKSa4pmK1fKWDhpzEdws3vnZfHtWT6jBUyFDfWUQG5V03uUv9a"
-										alt="Norway" style="width: 100%">
+										src="data:image/jpg;base64, ${currentGame.encodedImage}"
+										alt="Norway" style="width: 100%; height: 250px;">
 									<div class="w3-container w3-center">
 										<h3>${currentGame.name}</h3>
 										<p>${currentGame.description}</p>

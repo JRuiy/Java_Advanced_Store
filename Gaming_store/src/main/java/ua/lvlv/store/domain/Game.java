@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +26,9 @@ public class Game {
 	private String genre;
 	private Double price;
 
-
+	@Lob
+	private String encodedImage;
+	
 	public Game() {
 	}
 
@@ -114,6 +117,14 @@ public class Game {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 	@Override
