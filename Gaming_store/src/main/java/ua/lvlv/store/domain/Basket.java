@@ -1,6 +1,6 @@
 package ua.lvlv.store.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "busket")
-public class Busket {
+public class Basket {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,16 +30,20 @@ public class Busket {
 	@Column(name = "purchase_date")
 	private Date purchaseDate;
 
-	public Busket() {
+	public Basket() {
 	}
 
-	public Busket(User user, Game game, Date purchaseDate) {
+	public Basket(Integer id) {
+		this.id = id;
+	}
+
+	public Basket(User user, Game game, Date purchaseDate) {
 		this.user = user;
 		this.game = game;
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Busket(Integer id, User user, Game game, Date purchaseDate) {
+	public Basket(Integer id, User user, Game game, Date purchaseDate) {
 		this.id = id;
 		this.user = user;
 		this.game = game;
@@ -97,7 +101,7 @@ public class Busket {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Busket other = (Busket) obj;
+		Basket other = (Basket) obj;
 		if (game == null) {
 			if (other.game != null)
 				return false;

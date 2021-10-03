@@ -47,7 +47,7 @@
 				</div>
 				<li><a href="/home" class="home">Home</a></li>
 				<li><a href="/create-game">Add game</a></li>
-				<li><a href="/basket">Basket</a></li>
+				<li><a href="/baskets">Basket</a></li>
 				<li><a href="/login?logout"
 					onclick="document.forms['logoutForm'].submit()">Logout</a></li>
 			</ul>

@@ -22,11 +22,7 @@ public class GamesService {
 		return gameRepository.findAll();
 	}
 	
-//	public List<String> getAllPlatform(){
-//		List<String> listOfPlatform = new ArrayList<String>();
-//		for (Platform platform : Platform.values()) {
-//			listOfPlatform.add(platform.toString());
-//		}
-//		return listOfPlatform;
-//	}
+	public Game findByID(Integer id) {
+		return gameRepository.getById(id);
+	}
 }
