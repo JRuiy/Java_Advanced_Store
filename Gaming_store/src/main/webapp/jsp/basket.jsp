@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -47,8 +49,12 @@
 					</div>
 				</div>
 				<li><a href="/home" class="home">Home</a></li>
-				<li><a href="/create-game">Add game</a></li>
-				<li><a href="/baskets">Basket</a></li>
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<li><a href="/create-game">Add game</a></li>
+				</security:authorize>
+				<security:authorize access="hasRole('ROLE_USER')">
+					<li><a href="/baskets">Basket</a></li>
+				</security:authorize>
 				<li><a href="/login?logout"
 					onclick="document.forms['logoutForm'].submit()">Logout</a></li>
 			</ul>

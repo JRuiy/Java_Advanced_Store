@@ -26,7 +26,7 @@ public class UserService {
 		
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setPasswordConfim(passwordEncoder.encode(user.getPasswordConfim()));
-        user.setUserRole(UserRole.ROLE_USER);
+        user.setUserRole(UserRole.ROLE_ADMIN);
         userRepository.save(user);
     }
 	
