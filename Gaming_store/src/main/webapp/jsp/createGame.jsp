@@ -20,6 +20,7 @@
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
 	rel="stylesheet">
@@ -29,9 +30,22 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/home.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/calendar.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 
@@ -85,15 +99,13 @@
 								</tr>
 								<tr>
 									<td>Platform</td>
-									<td>
-									<select name="platform">
-										<option value="PS4">PS4</option>
-										<option value="PS5">PS5</option>
-										<option value="Xbox ONE">Xbox ONE</option>
-										<option value="Xbox X">Xbox X</option>
-										<option value="PC">PC</option>
-									</select>
-									</td>
+									<td><select name="platform">
+											<option value="PS4">PS4</option>
+											<option value="PS5">PS5</option>
+											<option value="Xbox ONE">Xbox ONE</option>
+											<option value="Xbox X">Xbox X</option>
+											<option value="PC">PC</option>
+									</select></td>
 								</tr>
 								<tr>
 									<td>Publisher</td>
@@ -136,18 +148,5 @@
 		</form>
 	</c:if>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/home.js"></script>
-	<script src="${contextPath}/resources/js/calendar.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>

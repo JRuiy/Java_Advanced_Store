@@ -15,11 +15,12 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Games</title>
+<title>Basket</title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
 	rel="stylesheet">
@@ -29,10 +30,23 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/css/tether.min.css"
 	rel="stylesheet">
-<link href="${contextPath}/resources/css/home.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/calendar.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 
@@ -72,42 +86,44 @@
 				<div class="row">
 					<div class="col-lg-12 col-lg-offset-2">
 						<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
-						
+
 						<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Price</th>
-							<th>Platform</th>
-							<th>Publisher</th>
-							<th>Release</th>
-							<th>Genre</th>
-							<th>Image</th>
-							<th>Purchase Date</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="basket" items="${basketItems}">
-							<tr>
-								<td>${basket.id}</td>
-								<td>${basket.game.name}</td>
-								<td>${basket.game.description}</td>
-								<td>${basket.game.price}</td>
-								<td>${basket.game.platform}</td>
-								<td>${basket.game.publisher}</td>
-								<td>${basket.game.release}</td>
-								<td>${basket.game.genre}</td>
-								<td><img src="data:image/jpg;base64,${basket.game.encodedImage}" alt="image" style="width: 10%"></td>
-								<td>${basket.purchaseDate}</td>
-								<td><a href="basket?id= ${basket.id}">delete</a></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-						
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Name</th>
+									<th>Description</th>
+									<th>Price</th>
+									<th>Platform</th>
+									<th>Publisher</th>
+									<th>Release</th>
+									<th>Genre</th>
+									<th>Image</th>
+									<th>Purchase Date</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="basket" items="${basketItems}">
+									<tr>
+										<td>${basket.id}</td>
+										<td>${basket.game.name}</td>
+										<td>${basket.game.description}</td>
+										<td>${basket.game.price}</td>
+										<td>${basket.game.platform}</td>
+										<td>${basket.game.publisher}</td>
+										<td>${basket.game.release}</td>
+										<td>${basket.game.genre}</td>
+										<td><img
+											src="data:image/jpg;base64,${basket.game.encodedImage}"
+											alt="image" style="width: 10%"></td>
+										<td>${basket.purchaseDate}</td>
+										<td><a href="basket?id= ${basket.id}">delete</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+
 					</div>
 				</div>
 			</div>
@@ -122,18 +138,6 @@
 		</form>
 	</c:if>
 
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/home.js"></script>
-	<script src="${contextPath}/resources/js/calendar.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </body>
 </html>
