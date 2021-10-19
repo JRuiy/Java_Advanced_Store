@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -15,7 +17,7 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Games</title>
+<title><spring:message code="home.addGame"></spring:message></title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -46,6 +48,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" src="/js/i18n.js"></script>
 </head>
 <body>
 
@@ -61,16 +64,28 @@
 						<a href="/home">Brand</a>
 					</div>
 				</div>
-				<li><a href="/home" class="home">Home</a></li>
+				<li><a href="/home" class="home"><spring:message
+							code="home.home"></spring:message></a></li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<li><a href="/create-game">Add game</a></li>
+					<li><a href="/create-game"><spring:message
+								code="home.addGame"></spring:message></a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('ROLE_USER')">
-					<li><a href="/baskets">Basket</a></li>
+					<li><a href="/baskets"><spring:message code="home.basket"></spring:message></a></li>
 				</security:authorize>
 				<li><a href="/login?logout"
-					onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+					onclick="document.forms['logoutForm'].submit()"><spring:message
+							code="home.logout"></spring:message></a></li>
 			</ul>
+			<div style="width: 100%; position: absolute; bottom: 40px;">
+				<fieldset>
+					<label><spring:message code="login.choose_lang"></spring:message></label>
+					<select id="locales">
+						<option value="en"><spring:message code="login.english"></spring:message></option>
+						<option value="ua"><spring:message code="login.ukrainian"></spring:message></option>
+					</select>
+				</fieldset>
+			</div>
 		</nav>
 		<!-- /#sidebar-wrapper -->
 
@@ -82,23 +97,23 @@
 					class="hamb-bottom"></span>
 			</button>
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-12 col-lg-offset-2">
-						<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
-
+				<div class="row" style="justify-content: left;">
+					<div class="col-lg-12 col-lg-offset-2"
+						style="max-width: 550px; background-color: #d8d8d8;">
+					<h2><spring:message code="home.title"></spring:message> ${pageContext.request.userPrincipal.name}</h2>
 						<form:form method="POST" action="${contextPath}/addGame"
 							enctype="multipart/form-data">
 							<table>
 								<tr>
-									<td>Name</td>
+									<td><spring:message code="createGame.name"></spring:message></td>
 									<td><input type="text" name="name" /></td>
 								</tr>
 								<tr>
-									<td>Description</td>
+									<td><spring:message code="createGame.description"></spring:message></td>
 									<td><input type="text" name="description" /></td>
 								</tr>
 								<tr>
-									<td>Platform</td>
+									<td><spring:message code="createGame.platform"></spring:message></td>
 									<td><select name="platform">
 											<option value="PS4">PS4</option>
 											<option value="PS5">PS5</option>
@@ -108,24 +123,24 @@
 									</select></td>
 								</tr>
 								<tr>
-									<td>Publisher</td>
+									<td><spring:message code="createGame.publisher"></spring:message></td>
 									<td><input type="text" name="publisher" /></td>
 								</tr>
 								<tr>
-									<td>Date release</td>
+									<td><spring:message code="createGame.dateRelease"></spring:message></td>
 									<td><input type="text" name="release" id="datepicker"
 										autocomplete="off" /></td>
 								</tr>
 								<tr>
-									<td>Genre</td>
+									<td><spring:message code="createGame.genre"></spring:message></td>
 									<td><input type="text" name="genre" /></td>
 								</tr>
 								<tr>
-									<td>Price</td>
+									<td><spring:message code="createGame.price"></spring:message></td>
 									<td><input type="number" name="price" autocomplete="off" /></td>
 								</tr>
 								<tr>
-									<td>Select an image to upload</td>
+									<td><spring:message code="createGame.image"></spring:message></td>
 									<td><input type="file" name="image" /></td>
 								</tr>
 								<tr>

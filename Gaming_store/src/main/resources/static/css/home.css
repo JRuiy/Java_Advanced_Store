@@ -322,3 +322,17 @@ a[onclick*="document.forms['logoutForm'].submit()"]::before {
 .row {
 	justify-content: space-around;
 }
+
+fieldset{
+	border: 0 !important;
+}
+fieldset>label{
+	display: block;
+	color: #ddd;
+    text-decoration: none;
+    text-align: center;
+}
+fieldset>select{
+	display: block;
+    margin: auto;
+}

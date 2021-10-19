@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -15,12 +17,12 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Welcome</title>
+<title><spring:message code="home.title"></spring:message></title>
 
 <link
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	rel="stylesheet">
-	<link href="/css/home.css" rel="stylesheet">
+<link href="/css/home.css" rel="stylesheet">
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
 	rel="stylesheet">
@@ -32,13 +34,17 @@
 	rel="stylesheet">
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/js/home.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
-
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.4/js/tether.min.js"></script>
+<script type="text/javascript" src="/js/i18n.js"></script>
 </head>
 <body>
 
@@ -54,16 +60,28 @@
 						<a href="/home">Brand</a>
 					</div>
 				</div>
-				<li><a href="/home" class="home">Home</a></li>
+				<li><a href="/home" class="home"><spring:message
+							code="home.home"></spring:message></a></li>
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<li><a href="/create-game">Add game</a></li>
+					<li><a href="/create-game"><spring:message
+								code="home.addGame"></spring:message></a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('ROLE_USER')">
-					<li><a href="/baskets">Basket</a></li>
+					<li><a href="/baskets"><spring:message code="home.basket"></spring:message></a></li>
 				</security:authorize>
 				<li><a href="/login?logout"
-					onclick="document.forms['logoutForm'].submit()">Logout</a></li>
+					onclick="document.forms['logoutForm'].submit()"><spring:message
+							code="home.logout"></spring:message></a></li>
 			</ul>
+			<div style="width: 100%; position: absolute; bottom: 40px;">
+				<fieldset>
+					<label><spring:message code="login.choose_lang"></spring:message></label>
+					<select id="locales">
+						<option value="en"><spring:message code="login.english"></spring:message></option>
+						<option value="ua"><spring:message code="login.ukrainian"></spring:message></option>
+					</select>
+				</fieldset>
+			</div>
 		</nav>
 		<!-- /#sidebar-wrapper -->
 
@@ -75,7 +93,7 @@
 					class="hamb-bottom"></span>
 			</button>
 			<div class="container">
-				<h2>Welcome ${pageContext.request.userPrincipal.name}</h2>
+				<h2><spring:message code="home.title"></spring:message> ${pageContext.request.userPrincipal.name}</h2>
 				<div class="row">
 					<c:if test="${not empty games}">
 						<c:forEach items="${games}" var="currentGame">
@@ -87,17 +105,17 @@
 									<p>${currentGame.description}</p>
 									<p>${currentPeriodical.price}</p>
 								</div>
-								
+
 								<security:authorize access="hasRole('ROLE_USER')">
 
-								<form:form action="${contextPath}/basket" method="POST"
-									enctype="multipart/form-data">
-									<input type="hidden" value="${currentGame.id}"
-										class="form-control" name="gameId">
-									<input type="submit" class="w3-button w3-block w3-dark-grey"
-										value="+ add to bucket">
-								</form:form>
-								
+									<form:form action="${contextPath}/basket" method="POST"
+										enctype="multipart/form-data">
+										<input type="hidden" value="${currentGame.id}"
+											class="form-control" name="gameId">
+										<input type="submit" class="w3-button w3-block w3-dark-grey"
+											value="<spring:message code='home.addToBasket'></spring:message>">
+									</form:form>
+
 								</security:authorize>
 							</div>
 						</c:forEach>

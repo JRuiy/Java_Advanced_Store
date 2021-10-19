@@ -16,7 +16,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Log in with your account</title>
+<title><spring:message code='login.title'></spring:message></title>
 <link href="/css/login.css" rel="stylesheet">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
